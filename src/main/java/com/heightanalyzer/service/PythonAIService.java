@@ -17,7 +17,7 @@ import java.io.IOException;
 @Service
 public class PythonAIService {
 
-    private static final String PYTHON_API_URL = "http://localhost:8000/analyze-image";
+    private static final String PYTHON_API_URL = "http://127.0.0.1:8001/estimate-height";
 
     public JsonNode sendImageToPython(MultipartFile file) throws IOException {
         try (CloseableHttpClient client = HttpClients.createDefault()) {
@@ -25,7 +25,7 @@ public class PythonAIService {
 
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
             builder.addBinaryBody(
-                    "file",
+                    "image",
                     file.getBytes(),
                     ContentType.create("image/jpeg"),
                     file.getOriginalFilename()
